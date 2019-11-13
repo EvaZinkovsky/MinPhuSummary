@@ -39,6 +39,10 @@ internalbymonth2 <- internal1819 %>%
 internalbymonth$SecondProductCategory[grepl("*Tôm\\s*", internalbymonth$SecondProductCategory)] <- "Penaeus sp"
 internalbymonth2$SecondProductCategory[grepl("*Tôm\\s*", internalbymonth2$SecondProductCategory)] <- "Penaeus sp"
 
+# Write CSV in R
+write.csv(internalbymonth, file = "data/InternalByMonth.csv",row.names=FALSE)
+write.csv(internalbymonth2, file = "data/InternalByMonth2.csv",row.names=FALSE)
+
 # create a table of the domestic sales for 2018            
 domestic2018 <- read_excel("data/MinhPhuSales_09112019.xlsx", 2)
 
@@ -70,6 +74,10 @@ domesticbymonth2 <- domestic1819 %>%
 # replace all occurrences of Tôm in the second product category
 domesticbymonth$SecondProductCategory[grepl("*Tôm\\s*", domesticbymonth$SecondProductCategory)] <- "Penaeus sp"
 domesticbymonth2$SecondProductCategory[grepl("*Tôm\\s*", domesticbymonth2$SecondProductCategory)] <- "Penaeus sp"
+
+# Write CSV in R
+write.csv(domesticbymonth, file = "data/DomesticByMonth.csv",row.names=FALSE)
+write.csv(domesticbymonth2, file = "data/DomesticByMonth2.csv",row.names=FALSE)
 
 # create a table of the export sales for 2018
 export2018 <- read_excel("data/MinhPhuSales_09112019.xlsx", 3)
@@ -103,3 +111,7 @@ exportbymonth2 <- export1819 %>%
 exportbymonth$SecondProductCategory[grepl("*Tôm\\s*", exportbymonth$SecondProductCategory)] <- "Penaeus sp"
 # replace all occurrences of Tôm in the second product category
 exportbymonth2$SecondProductCategory[grepl("*Tôm\\s*", exportbymonth2$SecondProductCategory)] <- "Penaeus sp"
+
+# Write CSV in R
+write.csv(exportbymonth, file = "data/ExportByMonth.csv",row.names=FALSE)
+write.csv(exportbymonth, file = "data/ExportByMonth2.csv",row.names=FALSE)
