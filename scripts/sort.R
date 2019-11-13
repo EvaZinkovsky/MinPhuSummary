@@ -29,7 +29,10 @@ internal1819$ShipmentMonth <- format(as.Date(internal1819$DateOfShipment), "%Y-%
 internalbymonth <- internal1819 %>% 
   group_by(ShipmentMonth, Destination, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
- 
+
+# replace all occurrences of Tôm in the second product category
+internalbymonth$SecondProductCategory[grepl("*Tôm\\s*", internalbymonth$SecondProductCategory)] <- "Penaeus sp"
+
 # create a table of the domestic sales for 2018            
 domestic2018 <- read_excel("data/MinhPhuSales_09112019.xlsx", 2)
 
@@ -53,6 +56,9 @@ domesticbymonth <- domestic1819 %>%
   group_by(ShipmentMonth, Destination, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
+# replace all occurrences of Tôm in the second product category
+domesticbymonth$SecondProductCategory[grepl("*Tôm\\s*", domesticbymonth$SecondProductCategory)] <- "Penaeus sp"
+
 # create a table of the export sales for 2018
 export2018 <- read_excel("data/MinhPhuSales_09112019.xlsx", 3)
 
@@ -72,7 +78,9 @@ export1819 <- bind_rows(export2018, export2019)
 export1819$ShipmentMonth <- format(as.Date(export1819$DateOfShipment), "%Y-%m") 
 
 # find the quantity of each product sold each month in each destination
-exportbymonth <- internal1819 %>% 
+exportbymonth <- export1819 %>% 
   group_by(ShipmentMonth, Destination, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
+# replace all occurrences of Tôm in the second product category
+exportbymonth$SecondProductCategory[grepl("*Tôm\\s*", exportbymonth$SecondProductCategory)] <- "Penaeus sp"
