@@ -27,12 +27,12 @@ internal1819$ShipmentMonth <- format(as.Date(internal1819$DateOfShipment), "%Y-%
 
 # find the quantity of each product sold each month in each destination 
 internalbymonth <- internal1819 %>% 
-  group_by(ShipmentMonth, FirstLevelExportMarket, SecondProductCategory)%>%
+  group_by(ShipmentMonth, PlantName, FirstLevelExportMarket, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # find the quantity of each product sold each month in each destination 
 internalbymonth2 <- internal1819 %>% 
-  group_by(ShipmentMonth, SecondProductCategory, FirstLevelExportMarket)%>%
+  group_by(ShipmentMonth, PlantName, SecondProductCategory, FirstLevelExportMarket)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # replace all occurrences of Tôm in the second product category
@@ -63,12 +63,12 @@ domestic1819$ShipmentMonth <- format(as.Date(domestic1819$DateOfShipment), "%Y-%
 
 # find the quantity of each product sold each month in each destination
 domesticbymonth <- domestic1819 %>% 
-  group_by(ShipmentMonth, FirstLevelExportMarket, SecondProductCategory)%>%
+  group_by(ShipmentMonth, PlantName, FirstLevelExportMarket, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # find the quantity of each product sold each month in each destination 
 domesticbymonth2 <- domestic1819 %>% 
-  group_by(ShipmentMonth, SecondProductCategory, FirstLevelExportMarket)%>%
+  group_by(ShipmentMonth, PlantName, SecondProductCategory, FirstLevelExportMarket)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # replace all occurrences of Tôm in the second product category
@@ -99,12 +99,12 @@ export1819$ShipmentMonth <- format(as.Date(export1819$DateOfShipment), "%Y-%m")
 
 # find the quantity of each product sold each month in each destination
 exportbymonth <- export1819 %>% 
-  group_by(ShipmentMonth, FirstLevelExportMarket, SecondProductCategory)%>%
+  group_by(ShipmentMonth, PlantName, FirstLevelExportMarket, SecondProductCategory)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # find the quantity of each product sold each month in each destination
 exportbymonth2 <- export1819 %>% 
-  group_by(ShipmentMonth, SecondProductCategory, FirstLevelExportMarket)%>%
+  group_by(ShipmentMonth, PlantName, SecondProductCategory, FirstLevelExportMarket)%>%
   summarise(QuantityKG = sum(QuantityKG))
 
 # replace all occurrences of Tôm in the second product category
